@@ -1,6 +1,7 @@
 package es.santyarbo.mymovies.data.network.movies
 
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface MoviesService {
@@ -10,5 +11,13 @@ interface MoviesService {
         @Query("api_key") apiKey: String,
         @Query("language") language: String,
         @Query("page") page: Int
-    ) : TopRatedResponseDTO
+    ) : MoviesResponseDTO
+
+    @GET("/tv/{tv_id}/similar")
+    suspend fun getSimilarTvShows(
+        @Path("tv_id") idTv: Int,
+        @Query("api_key") apiKey: String,
+        @Query("language") language: String,
+        @Query("page") page: Int
+    ) : MoviesResponseDTO
 }

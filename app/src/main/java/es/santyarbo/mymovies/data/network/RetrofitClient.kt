@@ -17,10 +17,9 @@ class RetrofitClient {
     companion object {
         private const val BASE_URL = "https://api.themoviedb.org/3/"
         private const val HEADER_ACCEPT_LANGUAGE = "Accept-Language"
-        const val API_KEY = BuildConfig.API_KEY
     }
 
-    val itemService: MoviesService by lazy {
+    val moviesService: MoviesService by lazy {
         buildRetrofit().create(MoviesService::class.java)
     }
 

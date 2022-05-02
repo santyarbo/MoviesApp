@@ -2,12 +2,11 @@ package es.santyarbo.mymovies.domain.model
 
 data class Movie(
     val posterPath: String,
-    val adult: Boolean,
     val overview: String,
-    val releaseDate: String,
+    val firstAirDate: String,
     val title: String,
     val backdropPath: String,
-    val popularity: Int,
+    val popularity: Double,
     val voteCount: Int,
-    val voteAverage: Int
+    val voteAverage: Double
 )
