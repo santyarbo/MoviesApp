@@ -17,7 +17,8 @@ class MoviesListState(
 ) {
 
     fun onMovieClicked(movie: Movie) {
-        //TODO navigate to detail
+        val action = MoviesListFragmentDirections.actionMoviesListFragmentToMovieDetailFragment(movie)
+        navController.navigate(action)
     }
 
     fun errorToString(error: Error) = when (error) {

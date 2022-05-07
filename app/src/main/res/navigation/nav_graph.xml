@@ -9,5 +9,21 @@
         android:id="@+id/moviesListFragment"
         android:name="es.santyarbo.mymovies.ui.list.MoviesListFragment"
         android:label="fragment_movies_list"
-        tools:layout="@layout/fragment_movies_list" />
+        tools:layout="@layout/fragment_movies_list" >
+        <action
+            android:id="@+id/action_moviesListFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieDetailFragment"
+        android:name="es.santyarbo.mymovies.ui.detail.MovieDetailFragment"
+        android:label="MovieDetailFragment" >
+        <argument
+            android:name="movie"
+            app:argType="es.santyarbo.mymovies.domain.model.Movie" />
+    </fragment>
 </navigation>

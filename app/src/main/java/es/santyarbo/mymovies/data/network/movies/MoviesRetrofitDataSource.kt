@@ -40,5 +40,6 @@ fun MovieDTO.toDomain() = Movie(
     popularity = popularity,
     voteCount = voteCount,
     voteAverage = voteAverage,
-    id = id
+    id = id,
+    originalLanguage = originalLanguage,
 )
