@@ -2,13 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="es.santyarbo.mymovies">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyMovies"
+        android:theme="@style/Theme.MyMovies.NoActionBar"
         android:name=".MyMoviesApp">
         <activity
             android:name=".ui.MainActivity"

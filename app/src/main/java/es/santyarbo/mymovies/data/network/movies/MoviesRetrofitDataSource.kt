@@ -15,14 +15,14 @@ class MoviesRetrofitDataSource @Inject constructor(
 
     override suspend fun getMovies(): Either<Error, List<Movie>> = tryCall {
         moviesService
-            .getMovies(apiKey, "es", 1)
+            .getMovies(apiKey, "es-ES", 1)
             .results
             .toDomain()
     }
 
     override suspend fun getSimilarTvShows(idMovie: Int): Either<Error, List<Movie>> = tryCall {
         moviesService
-            .getSimilarTvShows(idMovie, apiKey, "es", 1)
+            .getSimilarTvShows(idMovie, apiKey, "es-ES", 1)
             .results
             .toDomain()
     }
@@ -32,12 +32,13 @@ class MoviesRetrofitDataSource @Inject constructor(
 private fun List<MovieDTO>.toDomain(): List<Movie> = map { it.toDomain() }
 
 fun MovieDTO.toDomain() = Movie(
-    posterPath = posterPath,
+    posterPath =  "https://image.tmdb.org/t/p/w500/$posterPath",
     overview = overview,
     firstAirDate = firstAirDate,
     title = name,
     backdropPath = backdropPath,
     popularity = popularity,
     voteCount = voteCount,
-    voteAverage = voteAverage
+    voteAverage = voteAverage,
+    id = id
 )

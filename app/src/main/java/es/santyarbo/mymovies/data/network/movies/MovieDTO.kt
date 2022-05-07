@@ -10,9 +10,9 @@ data class MovieDTO(
     @SerialName("popularity")
     val popularity: Double,
     @SerialName("id")
-    val id: Int,
+    val id: Long,
     @SerialName("backdrop_path")
-    val backdropPath: String,
+    val backdropPath: String?,
     @SerialName("vote_average")
     val voteAverage: Double,
     @SerialName("overview")
