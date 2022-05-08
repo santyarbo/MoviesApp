@@ -23,8 +23,9 @@ class MoviesListViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            getMoviesUseCase().fold({ error -> _state.update { it.copy(error = error) } }) { movies ->
-                _state.update { UiState(movies = movies) }
+            _state.update { it.copy(loading = true) }
+            getMoviesUseCase().fold({ error -> _state.update { it.copy(error = error, loading = false) } }) { movies ->
+                _state.update { UiState(movies = movies, loading = false) }
             }
         }
     }

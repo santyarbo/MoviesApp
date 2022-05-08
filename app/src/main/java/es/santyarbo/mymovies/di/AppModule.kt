@@ -37,7 +37,8 @@ object AppModule {
     @Singleton
     fun provideOkHttpClient(): OkHttpClient = HttpLoggingInterceptor().run {
         level = HttpLoggingInterceptor.Level.BODY
-        OkHttpClient.Builder().addInterceptor(this).build()
+        OkHttpClient.Builder()
+            .addInterceptor(this).build()
     }
 
     @ExperimentalSerializationApi
@@ -45,10 +46,14 @@ object AppModule {
     @Singleton
     fun provideRemoteService(@ApiUrl apiUrl: String, okHttpClient: OkHttpClient): MoviesService {
         val contentType = "application/json".toMediaType()
+        val json = Json {
+            ignoreUnknownKeys = true
+            isLenient = true
+        }
         return Retrofit.Builder()
             .baseUrl(apiUrl)
             .client(okHttpClient)
-            .addConverterFactory(Json.asConverterFactory(contentType))
+            .addConverterFactory(json.asConverterFactory(contentType))
             .build()
             .create()
     }
