@@ -40,7 +40,7 @@
                 android:layout_height="250dp"
                 app:contentScrim="?attr/colorPrimary"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
-                app:statusBarScrim="?attr/colorPrimaryVariant">
+                app:statusBarScrim="?attr/colorPrimaryVariant" >
 
                 <ImageView
                     android:id="@+id/movie_detail_image"
@@ -57,7 +57,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     app:navigationIcon="@drawable/ic_arrow_back"
-                    app:title="@{movie.title}" />
+                    app:title="@{movie.title}"
+                    app:layout_collapseMode="pin" />
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
 
