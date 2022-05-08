@@ -49,6 +49,7 @@ object AppModule {
         val json = Json {
             ignoreUnknownKeys = true
             isLenient = true
+            explicitNulls = false
         }
         return Retrofit.Builder()
             .baseUrl(apiUrl)

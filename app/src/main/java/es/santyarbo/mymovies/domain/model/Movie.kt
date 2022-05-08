@@ -6,9 +6,9 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Movie(
     val id: Long,
-    val posterPath: String,
+    val posterPath: String?,
     val overview: String,
-    val firstAirDate: String,
+    val firstAirDate: String?,
     val title: String,
     val backdropPath: String?,
     val popularity: Double,

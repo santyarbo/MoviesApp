@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <import type="java.util.List" />
+        <import type="androidx.paging.PagingData" />
 
         <import type="es.santyarbo.mymovies.domain.model.Movie" />
 
@@ -14,7 +14,7 @@
 
         <variable
             name="movies"
-            type="List&lt;Movie>" />
+            type="PagingData&lt;Movie>" />
 
         <variable
             name="error"
@@ -46,7 +46,6 @@
             android:id="@+id/recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:items="@{movies}"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             app:spanCount="3"

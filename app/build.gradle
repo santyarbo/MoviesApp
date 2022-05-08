@@ -24,6 +24,7 @@ android {
         }
 
         buildConfigField 'String', 'API_KEY', '\"322d5234edf90573afdf222180a1c9f8\"'
+        buildConfigField 'Integer', 'NETWORK_PAGE_SIZE', '20'
     }
 
     buildTypes {
@@ -54,6 +55,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     def arrow_version = "1.0.1"
     def glide_version = "4.13.1"
+    def paging_version = "3.1.1"
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
@@ -64,6 +66,8 @@ dependencies {
     implementation "androidx.activity:activity-ktx:1.4.0"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+    implementation "androidx.paging:paging-runtime:$paging_version"
+
 
     implementation 'com.google.android.material:material:1.5.0'
     implementation "com.google.dagger:hilt-android:2.41"

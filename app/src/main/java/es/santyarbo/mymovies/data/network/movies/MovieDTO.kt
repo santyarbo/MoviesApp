@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class MovieDTO(
     @SerialName("poster_path")
-    val posterPath: String,
+    val posterPath: String?,
     @SerialName("popularity")
     val popularity: Double,
     @SerialName("id")
@@ -18,7 +18,7 @@ data class MovieDTO(
     @SerialName("overview")
     val overview: String,
     @SerialName("first_air_date")
-    val firstAirDate: String,
+    val firstAirDate: String?,
     @SerialName("origin_country")
     val originCountry: List<String>,
     @SerialName("genre_ids")

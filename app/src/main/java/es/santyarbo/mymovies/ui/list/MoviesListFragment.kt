@@ -4,10 +4,13 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
 import es.santyarbo.mymovies.R
 import es.santyarbo.mymovies.databinding.FragmentMoviesListBinding
 import es.santyarbo.mymovies.ui.common.launchAndCollect
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
@@ -28,9 +31,15 @@ class MoviesListFragment : Fragment(R.layout.fragment_movies_list) {
             recycler.adapter = adapter
         }
 
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.getMovies().collectLatest { movies ->
+                //binding.movies = movies
+                adapter.submitData(movies)
+            }
+        }
         viewLifecycleOwner.launchAndCollect(viewModel.state) {
             binding.loading = it.loading
-            binding.movies = it.movies
+            //binding.movies = it.movies
             binding.error = it.error?.let(moviesListState::errorToString)
         }
     }
