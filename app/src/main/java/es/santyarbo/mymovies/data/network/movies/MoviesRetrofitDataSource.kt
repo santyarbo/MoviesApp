@@ -18,13 +18,6 @@ class MoviesRetrofitDataSource @Inject constructor(
     private val moviesService: MoviesService
 ) : MoviesRemoteDataSource {
 
-    /*override suspend fun getMovies(): Either<Error, List<Movie>> = tryCall {
-        moviesService
-            .getMovies(apiKey, "es-ES", 1)
-            .results
-            .toDomain()
-    }*/
-
     override suspend fun getMovies(): Flow<PagingData<Movie>> {
         return Pager(
             config = PagingConfig(
