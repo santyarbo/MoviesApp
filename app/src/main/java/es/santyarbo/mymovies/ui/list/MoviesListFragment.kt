@@ -33,13 +33,11 @@ class MoviesListFragment : Fragment(R.layout.fragment_movies_list) {
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.getMovies().collectLatest { movies ->
-                //binding.movies = movies
                 adapter.submitData(movies)
             }
         }
         viewLifecycleOwner.launchAndCollect(viewModel.state) {
             binding.loading = it.loading
-            //binding.movies = it.movies
             binding.error = it.error?.let(moviesListState::errorToString)
         }
     }

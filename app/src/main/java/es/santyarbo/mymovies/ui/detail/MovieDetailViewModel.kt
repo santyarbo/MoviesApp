@@ -22,11 +22,15 @@ class MovieDetailViewModel @Inject constructor(
     val state: StateFlow<UiState> = _state.asStateFlow()
 
     init {
-        _state.update { UiState(movie = movie, loading = true) }
+        startUI()
         loadSimilarMovies()
     }
 
-    private fun loadSimilarMovies() {
+    fun startUI() {
+        _state.update { UiState(movie = movie, loading = true) }
+    }
+
+    fun loadSimilarMovies() {
         viewModelScope.launch {
             getSimilarTvShowsUseCase(movie.id.toInt()).fold({ onError() }) { movies ->
                 onSuccess(movies)

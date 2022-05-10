@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -25,17 +26,14 @@ class MoviesListViewModel @Inject constructor(
     val state: StateFlow<UiState> = _state.asStateFlow()
 
     init {
-        viewModelScope.launch {
-            _state.update { it.copy(loading = true) }
-            getMovies()
-            _state.update { it.copy(loading = false) }
-        }
+        _state.update { it.copy(loading = true) }
     }
 
     suspend fun getMovies() : Flow<PagingData<Movie>> {
-        return getMoviesUseCase().cachedIn(viewModelScope)
+        val movies = getMoviesUseCase.invoke()
+        _state.update { it.copy(movies = movies.first(), loading = false) }
+        return movies.cachedIn(viewModelScope)
     }
-
 
     data class UiState(
         val loading: Boolean = false,
